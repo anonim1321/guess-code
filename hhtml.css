@@ -1,0 +1,6 @@
+body {
+    background-color: black; /* Зміна фону сторінки */
+    display: flex;
+    height: 100vh;
+    margin: 0; /* Відсутність відступів для коректного центрування */
+}

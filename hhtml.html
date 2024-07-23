@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="html.css">
+    <style>
+        .bttn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .bttn:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        
+        .nn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: transparent;
+            color: transparent;
+        }
+        
+        .nn:hover {
+        	background-color: dark;
+        }
+    </style>
+</head>
+<body> 
+    <h1 id="codetext">Code:</h1>
+    <div id="buttons">
+        <button class="bttn" onclick="change(1)">1</button>
+        <button class="bttn" onclick="change(2)">2</button>
+        <button class="bttn" onclick="change(3)">3</button><br>
+        <button class="bttn" onclick="change(4)">4</button>
+        <button class="bttn" onclick="change(5)">5</button>
+        <button class="bttn" onclick="change(6)">6</button><br>
+        <button class="bttn" onclick="change(7)">7</button>
+        <button class="bttn" onclick="change(8)">8</button>
+        <button class="bttn" onclick="change(9)">9</button><br>
+        <button class="nn">1</button>
+        <button class="bttn" onclick="change(0)">0</button>
+        <button class="nn">1</button>
+    <div>
+    
+    <script>
+        let numbers = [null, null, null, null];
+        let c = null;
+        const code = 1409;
+
+        function change(bNumber) {
+            let h1el = document.getElementById("codetext");
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] === null) {
+                    numbers[i] = bNumber;
+                    break;
+                }
+            }
+
+            // Оновлення тексту
+            h1el.innerText = "Code: " + numbers.map(num => num !== null ? num : '').join('');
+
+            // Якщо всі числа введені, створити змінну c
+            if (!numbers.includes(null)) {
+                c = parseInt(numbers.join(''));
+                if (c === code) {
+                    h1el.innerText = "Correct";
+                    document.getElementById("buttons").style.display = "none";
+                } else {
+                    h1el.innerText = "Try Again";
+                    numbers = [null, null, null, null];
+                    c = null;
+                    setTimeout(() => {
+                        h1el.innerText = "Code: ";
+                    }, 500); 
+                }
+            }
+        }
+    </script>
+</body>
+</html>
